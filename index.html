@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#7654a7">
+  <meta name="description" content="Caça-Palavras Neuro 3D educativo, acessível e responsivo.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>Caça-Palavras Neuro 3D</title>
+</head>
+<body>
+  <a class="skip" href="#game">Pular para o jogo</a>
+  <section id="cover" class="cover">
+    <div class="cover-shade"></div>
+    <div class="orb one"></div><div class="orb two"></div><div class="orb three"></div>
+    <div class="cover-card">
+      <span class="eyebrow">EXPEDIÇÃO NEURO 60+</span>
+      <h1>Caça-Palavras Neuro 3D</h1>
+      <p>Encontre termos de Neuroanatomia, descubra seus significados e conquiste moedas do conhecimento.</p>
+      <div class="badges"><span>🔎 3 fases</span><span>🧠 Explicativo</span><span>🪙 Recompensas</span><span>🔊 Sons</span></div>
+      <button id="startBtn" class="primary giant">Iniciar expedição</button>
+      <small>A capa utiliza <code>assets/img/1.png</code>.</small>
+    </div>
+  </section>
+
+  <div id="app" class="app hidden">
+    <header class="topbar">
+      <div class="brand">🧠 <strong>Caça-Palavras Neuro</strong></div>
+      <div class="hud"><span id="phaseHud">Fase 1/3</span><span id="coinHud">🪙 0</span><span id="scoreHud">⭐ 0</span></div>
+      <div class="tools"><button id="fontDown">A−</button><button id="fontUp">A+</button><button id="contrastBtn" aria-pressed="false">Contraste</button><button id="soundBtn" aria-pressed="true">🔊 Som</button><button id="readBtn">🗣️ Ler</button></div>
+    </header>
+    <main id="game" class="game-shell">
+      <section class="mission-card">
+        <div><span id="phaseTag" class="eyebrow">MISSÃO 1</span><h2 id="phaseTitle"></h2><p id="phaseIntro"></p></div>
+        <div class="phase-medal" id="phaseMedal">🧭</div>
+      </section>
+      <div class="progress"><div id="progressFill"></div></div>
+      <section class="instructions"><button id="helpBtn" class="secondary">Como selecionar palavras</button><p id="message" aria-live="polite">Toque na primeira letra e arraste até a última.</p></section>
+      <section class="play-layout">
+        <div id="grid" class="word-grid" role="grid" aria-label="Grade do caça-palavras"></div>
+        <aside class="word-panel">
+          <h2>Palavras da fase</h2>
+          <div id="wordList" class="word-list"></div>
+          <button id="hintBtn" class="hint">💡 Mostrar uma dica</button>
+          <p id="hintStatus">Dicas disponíveis: 2</p>
+        </aside>
+      </section>
+      <section class="discoveries" aria-labelledby="discoveriesTitle">
+        <h2 id="discoveriesTitle">Descobertas neuroanatômicas</h2>
+        <div id="factCards" class="fact-cards"><p class="empty">As explicações aparecerão aqui quando você encontrar as palavras.</p></div>
+      </section>
+      <section class="rewards"><h2>Recompensas</h2><div class="reward-row"><article id="reward1">🔒<strong>Explorador</strong></article><article id="reward2">🔒<strong>Conector</strong></article><article id="reward3">🔒<strong>Neuro Mestre</strong></article></div></section>
+    </main>
+  </div>
+
+  <div id="helpModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><div class="modal-card"><h2 id="helpTitle">Como jogar</h2><p>Pressione a primeira letra e arraste em linha reta até a última. As palavras podem estar na horizontal, vertical ou diagonal, nos dois sentidos.</p><p>Cada acerto revela uma explicação e produz uma chuva de moedas.</p><button id="closeHelp" class="primary">Entendi</button></div></div>
+  <div id="phaseModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-card"><div id="modalIcon" class="big-reward">🏅</div><span class="eyebrow">FASE CONCLUÍDA</span><h2 id="modalTitle"></h2><p id="modalText"></p><button id="nextBtn" class="primary giant">Próxima fase</button></div></div>
+  <div id="victoryModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="victoryTitle"><div class="modal-card"><div class="confetti">✨ 🪙 🧠 🏆 🧠 🪙 ✨</div><div class="big-reward">🏆</div><h2 id="victoryTitle">Você é Neuro Mestre!</h2><p>As três redes de palavras foram decifradas.</p><strong id="finalResult"></strong><button id="againBtn" class="primary giant">Jogar novamente</button></div></div>
+  <div id="coinRain" aria-hidden="true"></div>
+  <script src="app.js"></script>
+</body>
+</html>
